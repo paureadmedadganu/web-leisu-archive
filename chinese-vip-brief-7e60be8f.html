@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再访 · 2026 世界杯 — 中文专页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: #f2f4f7;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrapper {
+            max-width: 960px;
+            width: 100%;
+        }
+
+        /* 开场短句 — 像书眉一样轻 */
+        .opening-verse {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: #5b677b;
+            border-left: 3px solid #cfd9e6;
+            padding-left: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 70%;
+        }
+
+        /* 承接段落 —— 带标识的引言块 */
+        .lead-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.2rem 2.4rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e6eaef;
+            margin-bottom: 3rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .lead-block:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .lead-block p {
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .lead-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #1e3c60;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #b8cadd;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #0b1d31;
+            border-bottom-color: #1e3c60;
+        }
+
+        /* 特点卡片区 — 细边框 + 柔和阴影 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0 2rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.6rem 1.4rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e1e6ed;
+            transition: transform 0.18s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+            color: #1e293b;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #3f4a5b;
+            line-height: 1.55;
+        }
+
+        .feature-card .badge {
+            display: inline-block;
+            background: #eef2f8;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.2rem 0.65rem;
+            color: #314b6b;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* 温和的提示 / 收藏建议 */
+        .gentle-tip {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e1e6ed;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            margin: 2.2rem 0 2.8rem;
+        }
+
+        .gentle-tip h2 {
+            font-size: 1.25rem;
+            font-weight: 550;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .gentle-tip ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 2rem;
+        }
+
+        .gentle-tip li {
+            font-size: 0.98rem;
+            padding-left: 1.8rem;
+            position: relative;
+            color: #2b3b50;
+        }
+
+        .gentle-tip li::before {
+            content: "—";
+            position: absolute;
+            left: 0.2rem;
+            color: #8599b4;
+            font-weight: 300;
+        }
+
+        /* FAQ 摘要 — 极简问答 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem 2rem;
+            border: 1px solid #e6eaef;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            margin: 2.2rem 0 2.5rem;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.1rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 550;
+            font-size: 0.95rem;
+            color: #1e3c60;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item span {
+            font-size: 0.92rem;
+            color: #3f4a5b;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 温和结尾 —— 引导再次收藏 */
+        .closing-note {
+            text-align: left;
+            padding: 1.8rem 0 0.8rem;
+            border-top: 1px solid #dce2eb;
+            margin-top: 1.5rem;
+            font-size: 0.96rem;
+            color: #48546b;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .closing-note a {
+            color: #1e3c60;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #b8cadd;
+            transition: border-color 0.15s;
+        }
+
+        .closing-note a:hover {
+            border-bottom-color: #1e3c60;
+        }
+
+        .closing-note .muted {
+            color: #6a7b93;
+            font-size: 0.88rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .opening-verse {
+                font-size: 1rem;
+                max-width: 90%;
+                padding-left: 1rem;
+            }
+
+            .lead-block {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .gentle-tip ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .closing-note {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- 开场短句：一点记忆的余光 -->
+    <div class="opening-verse">
+        再次打开这个页面，或许是因为你记得这里。
+    </div>
+
+    <!-- 承接段落：从收藏到持续关注 -->
+    <div class="lead-block">
+        <p>
+            五个月前，你第一次找到这个专页，存下了书签。那时赛程尚未落定，现在各支队伍渐次明朗，关于
+            <a href="https://chinese-vip-fifa2026.com" class="inline-link">世界杯</a>
+            的讨论也从预测转向了更具体的期待。这个站点的初衷很简单：用中文整理那些真正重要的信息，不堆砌花哨的倒计时，也不做空洞的预测。
+        </p>
+        <p>
+            每次更新都围绕一个原则——让再次回来的人，能立刻找到变化。赛程表、分组动态、举办城市实用备忘，以及一些不易在主流媒体上看到的观察笔记。如果你上一次来是三个月前，现在的内容已经迭代了三轮。
+        </p>
+    </div>
+
+    <!-- 特点列表：卡片式 -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="badge">持续更新</div>
+            <h3>赛历 &amp; 变动</h3>
+            <p>小组赛时间、球场变更、转播渠道调整，每一条都有来源备注。不追求最快，但要求可回溯。</p>
+        </div>
+        <div class="feature-card">
+            <div class="badge">精简备忘</div>
+            <h3>城市·场馆·交通</h3>
+            <p>16 座主办城市基础指南：从球场容量到地铁接驳，只写对现场或屏幕前的你有实际帮助的内容。</p>
+        </div>
+        <div class="feature-card">
+            <div class="badge">视角补充</div>
+            <h3>简报与摘要</h3>
+            <p>每周整理一份短简报，聚焦中文社区较少讨论的裁判安排、天气因素、历史对阵数据，而非重复热搜。</p>
+        </div>
+        <div class="feature-card">
+            <div class="badge">收藏友好</div>
+            <h3>站内导航</h3>
+            <p>每个页面都保留了清晰的层级入口。无论从哪一页开始，都能快速回到赛程总表或球队名单。</p>
+        </div>
+    </div>
+
+    <!-- 温和提示 + 收藏建议 -->
+    <div class="gentle-tip">
+        <h2>如果你愿意持续关注</h2>
+        <ul>
+            <li>将当前页面添加至浏览器书签</li>
+            <li>每月初回来看一次「更新摘要」</li>
+            <li>重要节点前（抽签、开赛前一周）页面会有结构微调</li>
+            <li>没有推送，没有弹窗，只有你主动回来时看到的更完整内容</li>
+        </ul>
+    </div>
+
+    <!-- FAQ 摘要：两三个实际点 -->
+    <div class="faq-mini">
+        <h3>常见问题 · 摘要</h3>
+        <div class="faq-item">
+            <strong>这个页面和官方中文网有什么区别？</strong>
+            <span>官方渠道侧重票务与转播公告；这里侧重整合、持续性阅读和横向比较，内容节奏更慢，篇幅更克制。</span>
+        </div>
+        <div class="faq-item">
+            <strong>信息多久更新一次？</strong>
+            <span>赛程、场馆有官方变动时 24 小时内更新；观察类内容每周不定时增补。最近一次更新在四天前。</span>
+        </div>
+        <div class="faq-item">
+            <strong>为什么强调“再次访问”？</strong>
+            <span>因为本站的设计前提是：你不需要天天来，但每次来都能发现实质性变化，而不是重复相同的信息。</span>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 自然嵌入链接 -->
+    <div class="closing-note">
+        <span>
+            关于 <a href="https://chinese-vip-fifa2026.com">世界杯</a> 的更多细目，
+            赛程、分组、球队档案，都在上方链接指向的页面里慢慢展开。
+        </span>
+        <span class="muted">书签可随时更新 · 下次再会</span>
+    </div>
+
+</div>
+</body>
+</html>
